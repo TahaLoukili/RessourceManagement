@@ -29,7 +29,7 @@ public class Ressource implements Serializable {
     private double prix;
     @Column(columnDefinition = "boolean default false")
     private boolean panne;
-    private LocalDate date_livraison;
+    private Integer livraisonId;
     private Integer duree_garentie;
     private Integer appelOffreId;
 
