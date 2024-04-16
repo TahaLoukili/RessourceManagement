@@ -1,4 +1,4 @@
 # RessourceManagement
 
 About
-this an Angular Spring poject that adopt the microservices architecture it's goal is to handle the materiel ressources of a university
+This Angular Spring project adopts the microservices architecture. Its goal is to manage the material resources of a university.
