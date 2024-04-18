@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/panneService")
 @RequiredArgsConstructor
+
 public class PanneController {
 
     private final PanneService panneService;
@@ -81,5 +83,12 @@ public class PanneController {
         Constat constat=panneService.updateConstat(c);
         return new ResponseEntity<>(constat,HttpStatus.OK);
 
+    }
+
+    //communication avec le service de  ressource
+    @GetMapping("/ressource/{recource-id}")
+    public ResponseEntity<List<Panne>> getAllRessourcesPannes(@PathVariable("recource-id") Integer id){
+
+        return new ResponseEntity<>(panneService.getAllRessourcesPannes(id), HttpStatus.OK);
     }
 }

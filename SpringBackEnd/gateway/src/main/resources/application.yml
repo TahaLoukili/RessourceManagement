@@ -4,19 +4,26 @@ eureka:
 
 server:
   port: 8222
+
 spring:
   application:
     name: gateway
   config:
-      import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://localhost:8888
   cloud:
     gateway:
       discovery:
-          locator:
-            enabled: true
+        locator:
+          enabled: true
       routes:
-        - id:
-          uri: http://localhost:8091
+        - id: ressourceService
           predicates:
-            - Path=/api/ressource/**
+            - Path=/api/ressourceService/**
+          uri: http://localhost:8091
+
+        - id: panneService
+          predicates:
+            - Path=/api/panneService/**
+          uri: http://localhost:8092
+
 

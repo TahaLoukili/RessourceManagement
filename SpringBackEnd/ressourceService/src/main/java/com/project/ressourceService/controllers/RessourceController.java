@@ -1,6 +1,7 @@
 package com.project.ressourceService.controllers;
 import com.project.ressourceService.models.Imprimante;
 import com.project.ressourceService.models.Ordinateur;
+import com.project.ressourceService.models.Panne;
 import com.project.ressourceService.models.Ressource;
 import com.project.ressourceService.service.RessourceService;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/ressource")
+@RequestMapping("/api/ressourceService")
 @RequiredArgsConstructor
 public class RessourceController {
     private final RessourceService ressourceService;
@@ -116,6 +119,15 @@ public class RessourceController {
         return new ResponseEntity<>(imprimante,HttpStatus.OK);
 
     }
+
+
+    //communication avec panne microservice
+    @GetMapping("/list-pannes/{ressource-id}")
+    public  ResponseEntity<List<Panne>> getRessourcePaanes(@PathVariable("ressource-id") Integer id){
+
+        return  new ResponseEntity<>(ressourceService.findRessourcePanne(id),HttpStatus.OK);
+    }
+
 
 
 

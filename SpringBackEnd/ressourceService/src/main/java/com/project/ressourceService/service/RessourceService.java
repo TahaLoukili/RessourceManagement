@@ -1,12 +1,15 @@
 package com.project.ressourceService.service;
 
+import com.project.ressourceService.Clients.PanneServiceClient;
 import com.project.ressourceService.models.Imprimante;
 import com.project.ressourceService.models.Ordinateur;
+import com.project.ressourceService.models.Panne;
 import com.project.ressourceService.models.Ressource;
 import com.project.ressourceService.repo.ImprimanteRepo;
 import com.project.ressourceService.repo.OrdinateurRepo;
 import com.project.ressourceService.repo.RessourceRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +21,7 @@ public class RessourceService {
     private final RessourceRepo ressourceRepo;
     private final OrdinateurRepo ordinateurRepo;
     private final ImprimanteRepo imprimanteRepo;
+    private final PanneServiceClient panneServiceClient;
 
     // CRUD operations for Ressource
 
@@ -135,5 +139,14 @@ public class RessourceService {
     }
 
 
+    public List<Panne> findRessourcePanne(Integer id) {
 
+        var ressourcePannes =panneServiceClient.findRessourcePannes(id);
+
+        for (int i=0;i<2;i++){
+            System.out.println(ressourcePannes.get(i));
+        }
+
+        return ressourcePannes;
+    }
 }

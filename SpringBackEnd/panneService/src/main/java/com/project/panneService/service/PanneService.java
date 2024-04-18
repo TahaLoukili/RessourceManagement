@@ -98,4 +98,9 @@ public class PanneService {
     }
 
 
+    public List<Panne> getAllRessourcesPannes(Integer id) {
+
+
+        return  panneRepo.findAllByressourceId(id);
+    }
 }
